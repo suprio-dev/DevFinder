@@ -5,10 +5,10 @@ let emptyState = document.querySelector("#emptyState");
 
 
 
-async function searchUSer(username="suprio-dev") {
-let response = await fetch(`https://api.github.com/users/${username}`);
-let data = await response.json();
-return data;
+async function searchUSer(username = "suprio-dev") {
+  let response = await fetch(`https://api.github.com/users/${username}`);
+  let data = await response.json();
+  return data;
 }
 
 
@@ -27,10 +27,9 @@ searchBtn.addEventListener('click', async (e) => {
           <p class="text-xs font-semibold uppercase tracking-[0.2em] text-violet-400">Search Result</p>
           <h3 class="mt-2 text-xl font-bold">Developer Profile</h3>
         </div>
-
-        <span class="rounded-full border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
+         <span class="rounded-full border border-emerald-400/20 bg-emerald-400/[0.06] px-3 py-1.5 text-xs font-medium text-emerald-300">
           ● GitHub User
-        </span>
+        </span>   
       </div>
 
       <article class="overflow-hidden rounded-3xl border border-white/10 bg-[#11111b] shadow-2xl shadow-black/20">
@@ -73,9 +72,11 @@ searchBtn.addEventListener('click', async (e) => {
                 </span>
 
 
-                <a id="profileWebsite" href="${userInfo.twitter_username}" target="_blank" rel="noopener noreferrer"
+                <a id="profileWebsite" href="" target="_blank" rel="noopener noreferrer"
                    class="items-center gap-2 text-violet-400 hover:text-violet-300">
-                  <span>🔗</span><span id="websiteText">Twitter</span>
+                  <span id="websiteText">
+                📅
+                Updated —${userInfo.updated_at}</span>
                 </a>
 
                 <span id="profileJoined" class="flex items-center gap-2">
@@ -117,11 +118,11 @@ searchBtn.addEventListener('click', async (e) => {
 
             <div class="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5 transition hover:border-fuchsia-400/30">
               <div class="flex items-center justify-between">
-                <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Email</p>
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">id</p>
                 <span class="text-lg text-fuchsia-400">♡</span>
               </div>
-              <p id="followingCount" class="mt-3 text-3xl font-extrabold tracking-tight">${userInfo.email || "Email not publicly available"}</p>
-              <p class="mt-1 text-xs text-slate-600">Email address</p>
+              <p id="followingCount" class="mt-3 text-3xl font-extrabold tracking-tight">${userInfo.id || "id not publicly available"}</p>
+              <p class="mt-1 text-xs text-slate-600">User id</p>
             </div>
 
           </div>
@@ -134,8 +135,8 @@ searchBtn.addEventListener('click', async (e) => {
             </div>
 
             <div class="rounded-xl border border-white/[0.06] p-4">
-              <p class="text-xs text-slate-500">Public Gists</p>
-              <p id="gistCount" class="mt-2 text-sm font-semibold text-slate-200">${userInfo.public_gists}</p>
+              <p class="text-xs text-slate-500">Blog/Website</p>
+              <p id="gistCount" class="mt-2 text-sm font-semibold text-slate-200">${userInfo.blog}</p>
             </div>
           </div>
 
@@ -148,3 +149,13 @@ searchBtn.addEventListener('click', async (e) => {
 })
 
 
+// removeBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   emptyState.classList.remove("hidden");
+//   profileSection.classList.add("hidden");
+//   profileSection.innerHTML = "";
+// })
+
+//   <button id="removeBtn"
+//           class="flex items-center justify-center gap-2 rounded-xl bg-violet-600 px-7 py-3 text-sm font-bold transition hover:bg-violet-500 active:scale-[0.98]">Clear
+//           Profile</button>
