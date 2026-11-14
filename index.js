@@ -19,6 +19,8 @@ async function searchUSer(username = "suprio-dev") {
 searchBtn.addEventListener('click', async (e) => {
   e.preventDefault();
   try {
+    if(!usernameInput.value.trim())
+      return;
     let userInfo = await searchUSer(usernameInput.value.trim());
     emptyState.classList.add("hidden");
     profileSection.classList.remove("hidden");
