@@ -2,6 +2,7 @@ let usernameInput = document.querySelector("#usernameInput");
 let searchBtn = document.querySelector("#searchBtn");
 let profileSection = document.querySelector("#profileSection");
 let emptyState = document.querySelector("#emptyState");
+let searchForm = document.querySelector("#searchForm");
 
 
 
@@ -16,11 +17,9 @@ async function searchUSer(username = "suprio-dev") {
 
 
 
-searchBtn.addEventListener('click', async (e) => {
+searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   try {
-    if(!usernameInput.value.trim())
-      return;
     let userInfo = await searchUSer(usernameInput.value.trim());
     emptyState.classList.add("hidden");
     profileSection.classList.remove("hidden");
