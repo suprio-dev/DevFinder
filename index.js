@@ -6,7 +6,7 @@ let searchForm = document.querySelector("#searchForm");
 
 
 
-async function searchUSer(username = "suprio-dev") {
+async function searchUSer(username) {
   let response = await fetch(`https://api.github.com/users/${username}`);
   let data = await response.json();
   return data;
@@ -21,6 +21,7 @@ searchForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   try {
     let userInfo = await searchUSer(usernameInput.value.trim());
+    usernameInput.value="";
     emptyState.classList.add("hidden");
     profileSection.classList.remove("hidden");
     profileSection.innerHTML = `<div class="mb-5 flex items-center justify-between">
